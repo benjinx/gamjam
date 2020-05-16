@@ -48,17 +48,18 @@ public class PlayerControls : MonoBehaviour
 
       if (Input.GetAxis("Mouse Y") < 0) //Down
       {
-         cameraRef.transform.Rotate(Vector3.right);
-         
+         if (cameraRef.transform.eulerAngles.x > 70 || cameraRef.transform.eulerAngles.x < 60)
+         {
+            cameraRef.transform.Rotate(Vector3.right);
+         }
+
       }
 
       if (Input.GetAxis("Mouse Y") > 0) //Up
       {
-         cameraRef.transform.Rotate(Vector3.left);
-         if (cameraRef.transform.eulerAngles.x < -60)
+         if (cameraRef.transform.eulerAngles.x > 300 || cameraRef.transform.eulerAngles.x < 290)
          {
-            Debug.Log("FUCK");
-            cameraRef.transform.rotation = new Quaternion(-60, cameraRef.transform.rotation.y, cameraRef.transform.rotation.z, cameraRef.transform.rotation.w);
+            cameraRef.transform.Rotate(Vector3.left);
          }
       }
    }
